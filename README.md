@@ -6,22 +6,24 @@
 
 ![OpsTrace UI](assets/dashboard_header.png)
 
-## 🚀 Release Notes (v2.0 - Final)
+## 🚀 Release Notes (v2.1)
 
-This version introduces significant performance improvements and deployment features over v1.5:
+**Latest Engineering Updates:**
 
+* **📋 Smart Clipboard Integration:** Enabled direct row copying from the data grid to the system clipboard for rapid reporting.
+* **⏱️ Precision Timestamping:** Added support for microsecond-level time formatting (`%f`) to ensure accurate sequencing of high-frequency logs.
+
+**Core v2.0 Improvements:**
 * **⚡ Performance Boost:** Implemented `@st.cache_data` for instant CSV conversion and file loading. Replaced pagination with **AgGrid Virtualization** to handle 100k+ rows without lag.
 * **🔍 Global Error Hunter:** New search capability to scan the entire dataset for specific keywords like "Error", "Fail", or "Exception" across all columns instantly.
-* **🧠 Logic Upgrade:** "Divert Status" filter upgraded to **Inclusion Logic** (Check-to-see), preventing data loss during filtering.
 * **📦 Windows Deployment:** Added `.bat` scripts and icon configuration for one-click execution on Windows environments without IDE requirement.
-* **🎨 UI Polish:** Enhanced visual hierarchy, removed top padding, and added a custom "Welcome" screen.
 
 ## 🎯 Key Features
 
 * **🔐 Secure Access:** Session-state based login system to protect operational data.
-* **📂 Multi-File Ingestion:** Drag & drop interface to merge multiple log files (.log, .txt) into a single master dataset automatically.
+* **📂 Multi-File Ingestion:** Drag & drop interface to merge multiple log files (`.log`, `.txt`) into a single master dataset automatically.
 * **⏳ Time Machine Filtering:** Precise date & time range filtering with UTC timezone normalization.
-* **🔗 Chained Filtering Logic:** Dynamic dropdowns where Sub-Category depends on Category, and Zone depends on Sub-Category.
+* **🧠 Inclusion Logic:** "Divert Status" filter uses smart inclusion logic (Check-to-see), preventing data loss during multi-stage filtering.
 * **📥 One-Click Export:** Generates Windows-compatible (UTF-8-SIG) CSV reports for management.
 
 ## 🛠 Tech Stack & Concepts Used
@@ -45,4 +47,4 @@ This version introduces significant performance improvements and deployment feat
     * **Password:** `******`
 
 ---
-*Developed by Ozan Zeydanoglu *
+*Developed by Ozan Zeydanoglu*

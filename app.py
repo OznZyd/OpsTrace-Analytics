@@ -228,7 +228,7 @@ if update_files:
 
     builder.configure_default_column(
         groupable=True, value=True, enableRowGroup=True, aggFunc='sum', editable=True,
-        filter=True, sortable=True, minWidth=150, floatingFilter=True
+        filter=True, sortable=True, minWidth=50, floatingFilter=True
     )
 
     builder.configure_grid_options(
