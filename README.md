@@ -1,50 +1,48 @@
-# 🕵️‍♂️ OpsTrace Analytics
+# OpsTrace Analytics
 
-> **"Turning raw industrial logs into actionable insights."**
+Log analysis tool for industrial machine logs, built with Python, Pandas and Streamlit.
 
-**OpsTrace Analytics** is a professional-grade log analysis tool designed to help engineers visualize, filter, and extract meaningful data from scattered log files. It transforms manual, time-consuming error tracing into a few clicks.
+<!-- keep your existing logo line here -->
 
-![OpsTrace UI](assets/dashboard_header.png)
+## Why it exists
+A control support engineer in the intralogistics sector had to trace machine errors by opening scattered `.log` and `.txt` files one by one and searching them by hand. OpsTrace merges those files into one dataset and makes it searchable and filterable in the browser, even at 100k+ rows. The tool is in daily use.
 
-## 🚀 Release Notes (v2.1)
+## Screenshot
+![OpsTrace main view](docs/screenshot.png)
+*Synthetic data.*
 
-**Latest Engineering Updates:**
+## Features
+- **Multi-file ingestion:** drag and drop several `.log` / `.txt` files; they are merged into one dataset.
+- **Time range filtering:** filter by date and time, with UTC normalisation and microsecond timestamps.
+- **Keyword search across all columns:** find terms such as "Error", "Fail" or "Exception" in the full dataset.
+- **Status filter:** inclusion-based filter (select what to keep), so multi-step filtering does not drop rows by mistake.
+- **Large tables:** AgGrid virtualisation and Streamlit caching keep 100k+ rows responsive; rows can be copied to the clipboard.
+- **Export:** CSV export in UTF-8-SIG, so reports open correctly in Excel.
+- **Simple access control:** password gate based on Streamlit session state.
 
-* **📋 Smart Clipboard Integration:** Enabled direct row copying from the data grid to the system clipboard for rapid reporting.
-* **⏱️ Precision Timestamping:** Added support for microsecond-level time formatting (`%f`) to ensure accurate sequencing of high-frequency logs.
+## How it works
+1. **Load:** read and merge the log files.
+2. **Transform:** parse timestamps, clean and normalise columns.
+3. **Present:** filter, search and export in the browser.
 
-**Core v2.0 Improvements:**
-* **⚡ Performance Boost:** Implemented `@st.cache_data` for instant CSV conversion and file loading. Replaced pagination with **AgGrid Virtualization** to handle 100k+ rows without lag.
-* **🔍 Global Error Hunter:** New search capability to scan the entire dataset for specific keywords like "Error", "Fail", or "Exception" across all columns instantly.
-* **📦 Windows Deployment:** Added `.bat` scripts and icon configuration for one-click execution on Windows environments without IDE requirement.
+## Tech stack
+Python 3 · Pandas · Streamlit · streamlit-aggrid
 
-## 🎯 Key Features
+## Run it locally
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+On Windows you can also double-click `start.bat`.
 
-* **🔐 Secure Access:** Session-state based login system to protect operational data.
-* **📂 Multi-File Ingestion:** Drag & drop interface to merge multiple log files (`.log`, `.txt`) into a single master dataset automatically.
-* **⏳ Time Machine Filtering:** Precise date & time range filtering with UTC timezone normalization.
-* **🧠 Inclusion Logic:** "Divert Status" filter uses smart inclusion logic (Check-to-see), preventing data loss during multi-stage filtering.
-* **📥 One-Click Export:** Generates Windows-compatible (UTF-8-SIG) CSV reports for management.
+## Data
+This repository contains no real company data. Sample files are synthetic.
 
-## 🛠 Tech Stack & Concepts Used
+## Changelog
+- **v2.1:** copy rows from the grid to the clipboard; microsecond timestamp support.
+- **v2.0:** caching for file loading; AgGrid virtualisation for 100k+ rows; keyword search across all columns; Windows launcher.
 
-* **Core:** Python 3.x
-* **Data Engine:** `Pandas` (ETL, Concat, Filtering, DateTime Conversion)
-* **Interface:** `Streamlit`, `AgGrid` (Advanced Tables)
-* **Engineering Patterns:**
-    * **ETL Pipeline:** Extract (Load), Transform (Clean/Merge), Load (Display).
-    * **Caching Strategy:** Optimization for heavy I/O operations.
-    * **Defensive Coding:** `try-except` blocks and `len()` checks to prevent crashes.
+## License
+MIT
 
-## 🚀 How to Run
-
-1.  **Windows (Easy Mode):** Double click `Baslat.bat` (or the desktop shortcut).
-2.  **Manual Mode:**
-    ```bash
-    streamlit run app.py
-    ```
-3.  **Login Credentials:**
-    * **Password:** `******`
-
----
-*Developed by Ozan Zeydanoglu*
+Built by Ozan Zeydanoğlu · [LinkedIn](https://www.linkedin.com/in/ozanzeydanoglu/)
