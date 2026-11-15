@@ -31,7 +31,7 @@ def local_all_data(files):
     dt = dt.dropna(axis=1, how='all')
 
     dt["Time"] = dt["Time"].astype(str).str.strip()
-    dt["Time"] = pd.to_datetime(dt["Time"], errors='coerce').dt.tz_localize(None)
+    dt["Time"] = pd.to_datetime(dt["Time"], errors="coerce", utc=True).dt.tz_convert(None)
 
     for clm in dt.columns:
         if dt[clm].dtype == 'object':
@@ -81,7 +81,7 @@ st.sidebar.markdown("""
                     unsafe_allow_html=True)
 
 
-update_files = st.sidebar.file_uploader("Update .log Files", accept_multiple_files=True)
+update_files = st.sidebar.file_uploader("Upload .log files", accept_multiple_files=True)
 
 if update_files:
     dt = local_all_data(update_files)
