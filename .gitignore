@@ -1,0 +1,8 @@
+.DS_Store
+__pycache__/
+.venv/
+.venv_new/
+.idea/
+.streamlit/secrets.toml
+sample_1.txt
+*.log
