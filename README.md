@@ -1,17 +1,27 @@
 # OpsTrace Analytics
 
+<img src="assets/SideBar.png" alt="OpsTrace logo" width="240">
+
 Log analysis tool for industrial machine logs, built with Python, Pandas and Streamlit.
 
-<!-- keep your existing logo line here -->
-
 ## Why it exists
+
 A control support engineer in the intralogistics sector had to trace machine errors by opening scattered `.log` and `.txt` files one by one and searching them by hand. OpsTrace merges those files into one dataset and makes it searchable and filterable in the browser, even at 100k+ rows. The tool is in daily use.
 
-## Screenshot
-![OpsTrace main view](docs/screenshot.png)
+## Screenshots
+
+**Main view:** merged logs with filters and search.
+
+![OpsTrace main view](assets/screenshot_main.png)
+
+**Login screen**
+
+<img src="assets/screenshot_login.png" alt="OpsTrace login screen" width="600">
+
 *Synthetic data.*
 
 ## Features
+
 - **Multi-file ingestion:** drag and drop several `.log` / `.txt` files; they are merged into one dataset.
 - **Time range filtering:** filter by date and time, with UTC normalisation and microsecond timestamps.
 - **Keyword search across all columns:** find terms such as "Error", "Fail" or "Exception" in the full dataset.
@@ -21,28 +31,36 @@ A control support engineer in the intralogistics sector had to trace machine err
 - **Simple access control:** password gate based on Streamlit session state.
 
 ## How it works
+
 1. **Load:** read and merge the log files.
 2. **Transform:** parse timestamps, clean and normalise columns.
 3. **Present:** filter, search and export in the browser.
 
 ## Tech stack
+
 Python 3 · Pandas · Streamlit · streamlit-aggrid
 
 ## Run it locally
+
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
-On Windows you can also double-click `start.bat`.
+
+On macOS you can also double-click `start.command`. To try it, upload `sample_synthetic.txt`.
 
 ## Data
-This repository contains no real company data. Sample files are synthetic.
+
+This repository contains no real company data. `sample_synthetic.txt` is generated test data with invented zones, codes and barcodes.
 
 ## Changelog
+
+- **v2.2:** robust timestamp parsing for logs with mixed time zone offsets.
 - **v2.1:** copy rows from the grid to the clipboard; microsecond timestamp support.
-- **v2.0:** caching for file loading; AgGrid virtualisation for 100k+ rows; keyword search across all columns; Windows launcher.
+- **v2.0:** caching for file loading; AgGrid virtualisation for 100k+ rows; keyword search across all columns; launcher script.
 
 ## License
+
 MIT
 
 Built by Ozan Zeydanoğlu · [LinkedIn](https://www.linkedin.com/in/ozanzeydanoglu/)
